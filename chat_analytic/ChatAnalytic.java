@@ -11,6 +11,7 @@ public class ChatAnalytic {
         // append those numbers to a local database if you're into that OR another CSV (this might make it easier to display rather than having to then read the DB and display in the terminal or some shit)
         System.out.println("code compiling and running");
 
+        String[] tags = {"frequent_visitor", "mtb", "road", "bmx", "sale", "commuter", "e-bike", "scooter", "2hb", };
         // Tag Array
         // String[] tagStrings;
 
@@ -25,10 +26,22 @@ public class ChatAnalytic {
 
             //need a way to distinguish between commas in tags col and csv commas
             while ((line = file.readLine()) != null) {
-
-
                 String[] tag = line.split(csvSplitBy);
-                System.out.println("Tag = " + tag[31]);
+                //clean the strings of quote marks
+                for (String retVal : tag) {
+                    if (retVal.startsWith("\"") || retVal.endsWith("\"")) {
+                        retVal = retVal.replace("\"", "");
+                        // System.out.println("string cleaned...");
+                    }
+                }
+                // check for match
+                for (String ret : tag) {
+                    for (String match : tags) {
+                        if (ret.equals(match)) {
+                            System.out.println(ret);
+                        }
+                    }
+                }
             }
 
         } catch (FileNotFoundException e) {
