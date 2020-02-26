@@ -16,14 +16,17 @@ public class ChatAnalytic {
 
 
         // array of known tags
-        String[] tags = {"frequent_visitor", "mtb", "road", "bmx", "sale", "commuter", "e-bike", "scooter", "2hb"};
+        String[] tags = {"frequent_visitor", "mtb", "road", "bmx", "sale", "commuter", "e-bike", 
+                        "scooter", "2hb", "workshop", "stock", "club99", "racks", "helmet", 
+                        "finance", "tyre", "store", "trainer", "rental", "price-beat", "cruiser"};
+                        
         // list of found tags
         List<String> finalTags = new ArrayList<String>();
         List<String> currentTags = new ArrayList<String>();
 
         //  first args is file name (locally)
         // Todo: add ability to give path as args
-        String csv = args[0];
+        String csv = "../chat_analytic/csvs/" + args[0];
         BufferedReader file = null;
         BufferedReader output = null;
         String line, line2 = "";
